@@ -613,21 +613,28 @@ section {
   margin: 0 !important;
 }
 
-#started .card-body ol,
-.card-body ul {
+#started .card-body ol, ul {
   font-weight: 500;
   text-align: left;
   border: none;
   outline: none;
 }
 
-#started .card-body ol > li,
+#started .card-body ol {
+  margin-left: -25px;
+}
+
+#started .card-body ol > li, 
 .card-body ul > li {
   border: none;
   outline: none;
   width: 90%;
   padding: 4px;
   color: rgba(52, 64, 52, 0.9);
+}
+
+.card-body ul > li {
+  width: fit-content;
 }
 
 #started .list-group-item a {
