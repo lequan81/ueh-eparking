@@ -50,9 +50,10 @@ const createNewCombo10 = async (e) => {
   const doc = {
     mssv: form.mssv.value,
     username: form.username.value,
+    email: form.email.value,
     bienso: form.bienso.value,
     sdt: form.phonenumber.value,
-    amount: 20,
+    amount: form.quantity.value * 20,
   }
 
   let res = await fetch('https://superficial-east-cake.glitch.me/data', {
@@ -65,7 +66,7 @@ const createNewCombo10 = async (e) => {
     console.log('ok');
 
     Toastify({
-      text: " Đăng ký Combo 20 lượt thành công! ",
+      text: " Đăng ký Combo 10 lượt thành công! ",
       duration: 4000,
       destination: "/",
       newWindow: true,

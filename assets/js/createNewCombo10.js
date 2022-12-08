@@ -50,9 +50,10 @@ const createNewCombo10 = async (e) => {
   const doc = {
     mssv: form.mssv.value,
     username: form.username.value,
+    email: form.email.value,
     bienso: form.bienso.value,
     sdt: form.phonenumber.value,
-    amount: 10,
+    amount: form.quantity.value * 10,
   }
 
   let res = await fetch('https://superficial-east-cake.glitch.me/data', {

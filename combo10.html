@@ -40,7 +40,7 @@
       <div id="logo">
         <a href="index.html"><img src="assets/img/logo.png" alt=""></a>
       </div>
-      
+
     </div>
   </header>
 
@@ -70,25 +70,51 @@
                     name="mssv" />
                 </div>
                 <div class="col mb-3">
-                  <label class="form-label" for="form2Example2">Họ và Tên (*)</label>
-                  <input type="text" id="form2Example2" class="form-control" required placeholder="John Doe"
-                    name="username" />
+                  <label class="form-label" for="form2Example2">Email UEH (*)</label>
+                  <input type="text" id="form2Example2" class="form-control" required placeholder="johndoe@ueh.vn"
+                    name="email" />
                 </div>
               </div>
 
               <div class="row g-3">
                 <div class="col mb-3">
+                  <label class="form-label" for="form2Example1">Họ và Tên (*)</label>
+                  <input type="text" id="form2Example1" class="form-control" required placeholder="John Doe"
+                    name="username" />
+                </div>
+                <div class="col mb-3">
                   <label class="form-label" for="form2Example2">Biển số xe (*)</label>
-                  <input type="text" id="form2Example2" class="form-control" required placeholder="51B9-8901"
+                  <input type="text" id="form2Example2" class="form-control" required placeholder="51B9-0123"
                     name="bienso" />
+                </div>
+              </div>
+
+              <div class="row g-3">
+                <div class="col mb-3">
+                  <label class="form-label" for="form2Example2">Số lượng (*)</label>
+                  <div class="custom-input">
+                    <div class="number-input">
+                      <button id="btn-minus"></button>
+                      <input class="quantity" min="1" name="quantity" value="1" type="number">
+                      <button id="btn-add" class="plus"></button>
+                    </div>
+                  </div>
                 </div>
                 <div class="col mb-3">
                   <label class="form-label" for="form2Example2">Số điện thoại</label>
-                  <input type="phone" id="form2Example2" class="form-control" placeholder="567 890 1234"
-                    name="phonenumber" />
+                  <input type="text" id="form2Example2" class="form-control" placeholder="678 901 2345"
+                    name="phonenumber"/>
                 </div>
               </div>
-              <button class="btn btn--signin" type="submit">Đăng ký</button>
+
+              <div class="row g-3">
+                <div class="col">
+                  <span class="money-total">Tổng giá tiền: <span id="money"></span></span>
+                </div>
+                <div class="col">
+                  <button class="btn btn--signin" type="submit">Đăng ký</button>
+                </div>
+              </div>
             </form>
           </div>
         </div>
@@ -101,9 +127,9 @@
       <div class="copyright">
         &copy; Copyright @ 2022<strong> UEH e-Parking Corporation</strong>. All Rights Reserved
       </div>
-      <div class="credits">
+      <!-- <div class="credits">
         From UEH e-Parking with love <'3 </div>
-      </div>
+      </div> -->
   </footer><!-- End Footer -->
 
   <!-- Vendor JS Files -->
@@ -112,6 +138,30 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <!-- Template Main JS File -->
   <script src="assets/js/createNewCombo10.js"></script>
+
+  <script>
+    const btnAdd = document.getElementById('btn-add');
+    const btnMinus = document.getElementById('btn-minus');
+    const oneTicketCost = 49;
+
+    const func1 = () => {
+      let moneyTotal = form.quantity.value * oneTicketCost;
+      document.getElementById('money').textContent = moneyTotal.toLocaleString( 'vi-VN' ) + '.000 VND';
+    }
+    func1(); // run once for update the text
+
+    btnAdd.addEventListener('click', function () {
+      this.parentNode.querySelector('input[type=number]').stepUp();
+      func1();
+    })
+
+    btnMinus.addEventListener('click', function () {
+      this.parentNode.querySelector('input[type=number]').stepDown();
+      func1();
+    })
+
+    func1();
+  </script>
 </body>
 
 </html>
