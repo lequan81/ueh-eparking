@@ -512,7 +512,8 @@ section {
 --------------------------------*/
 #about {
   background: var(--white);
-  padding: 80px 0;
+  padding-top: 90px;
+  padding-bottom: 100px;
 }
 
 #about .about-container .background {
@@ -613,7 +614,8 @@ section {
   margin: 0 !important;
 }
 
-#started .card-body ol, ul {
+#started .card-body ol,
+ul {
   font-weight: 500;
   text-align: left;
   border: none;
@@ -624,7 +626,7 @@ section {
   margin-left: -25px;
 }
 
-#started .card-body ol > li, 
+#started .card-body ol > li,
 .card-body ul > li {
   border: none;
   outline: none;
@@ -664,6 +666,47 @@ section {
   height: 200px;
   width: 200px;
 }
+
+@media (max-width: 660px) {
+  #payment .img-container img {
+    height: 114px;
+    width: 114px;
+  }
+
+  #payment .img-container .overlay {
+    height: 114px;
+    width: 114px;
+  }
+
+  #payment .img-container {
+    height: 114px;
+    width: 114px;
+  }
+
+  #payment .img-container p {
+    font-weight: 500;
+    font-size: 12px;
+    padding: 2px;
+  }
+}
+
+@media (min-width: 670px) and (max-width: 1020px) {
+  #payment .img-container img {
+    height: 120px;
+    width: 120px;
+  }
+
+  #payment .img-container .overlay {
+    height: 120px;
+    width: 120px;
+  }
+
+  #payment .img-container {
+    height: 120px;
+    width: 120px;
+  }
+}
+
 #payment .img-container:hover .overlay {
   opacity: 0.8;
 }
@@ -675,6 +718,7 @@ section {
   transform: translate(-50%, -50%);
   color: #fff;
   cursor: pointer;
+  width: max-content;
 }
 
 #payment .overlay span > a {
@@ -793,12 +837,19 @@ section {
   justify-content: center;
 }
 #team .img-team img {
-  width: 700px;
+  width: 800px;
   height: auto;
   align-items: center;
   text-align: center;
   justify-content: center;
   border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  #team .img-team img {
+    width: 400px;
+    border-radius: 4px;
+  }
 }
 
 #team .member {
@@ -968,15 +1019,68 @@ section {
   padding: 20px;
 }
 
-.modal-body .row .col-6 .img-container {
-  height: 400px;
-  width: 400px;
+.modal-content {
+  border-radius: 6px;
+}
+
+.modal-body .row .col-5 .img-container {
+  height: 250px;
+  width: 250px;
 }
 
 .modal-body .img-container > img {
   width: 100%;
   height: auto;
   border-radius: 8px;
+  margin: auto 18px;
+}
+
+@media (max-width: 660px) {
+  .modal-body .row .col-5 .img-container {
+    height: 120px;
+    width: 120px;
+  }
+
+  .modal-header .btn-close {
+    margin-left: 86% !important;
+    padding: 26px;
+  }
+
+  .modal-body .img-container > img {
+    margin: auto 12px;
+  }
+
+  .modal-body .row .col-6 .row-6 {
+    display: unset;
+  }
+  .modal-body .col-6 .row-6 .btn {
+    width: 185px;
+    margin-top: 8px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1020px) {
+  .modal-body .row .col-5 .img-container {
+    height: 160px;
+    width: 160px;
+  }
+
+  .modal-header .btn-close {
+    margin-left: 86% !important;
+    padding: 26px;
+  }
+
+  .modal-body .img-container > img {
+    margin: auto 12px;
+  }
+
+  .modal-body .row .col-6 .row-6 {
+    display: unset;
+  }
+  .modal-body .col-6 .row-6 .btn {
+    width: 185px;
+    margin-top: 8px;
+  }
 }
 
 .modal-body .col-6 .row-4,
@@ -1012,7 +1116,7 @@ p {
 .modal-body .col-6 .row-6 .btn {
   border-radius: 0px;
   padding: 6px;
-  margin: 2px;
+  margin: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1060,8 +1164,38 @@ p {
 .buycombo-container {
   position: relative;
   padding: 30px;
-  margin: 40px;
+  margin: 30px;
   z-index: 10;
+}
+
+@media (min-width: 660px) {
+
+  .buycombo-container .row .col-5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .buycombo-container {
+    padding: 0px;
+    margin: 0px;
+  }
+
+  .buycombo-container .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .buycombo-container .row .col-5 {
+    height: 255px;
+  }
+  .buycombo-container .row .col-5 .img-container {
+    height: 50px;
+    padding: 0px;
+  }
 }
 
 .buycombo-container .row {
@@ -1130,7 +1264,7 @@ p {
 .circle--green {
   width: 250px;
   height: 250px;
-background-color: var(--light-green);
+  background-color: var(--light-green);
   top: 25px;
   left: 25px;
   z-index: 1;
@@ -1145,7 +1279,7 @@ background-color: var(--light-green);
 .circle--red {
   width: 300px;
   height: 300px;
-  background-color: var(--red);  
+  background-color: var(--red);
   bottom: 50px;
   left: 200px;
   z-index: 2;
@@ -1174,8 +1308,8 @@ input[type="number"] {
   appearance: textfield;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
 }
 
@@ -1191,7 +1325,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .number-input button {
-  outline:none;
+  outline: none;
   -webkit-appearance: none;
   background-color: transparent;
   border: none;
@@ -1208,7 +1342,7 @@ input[type=number]::-webkit-outer-spin-button {
 .number-input button:after {
   display: inline-block;
   position: absolute;
-  content: '';
+  content: "";
   width: 1rem;
   height: 2px;
   background-color: #212121;
@@ -1218,10 +1352,10 @@ input[type=number]::-webkit-outer-spin-button {
   transform: translate(-50%, -50%) rotate(90deg);
 }
 
-.number-input input[type=number] {
+.number-input input[type="number"] {
   font-family: sans-serif;
   max-width: 3rem;
-  padding: .25rem;
+  padding: 0.25rem;
   border: solid #ddd;
   border-width: 0 2px;
   font-size: 1.25rem;

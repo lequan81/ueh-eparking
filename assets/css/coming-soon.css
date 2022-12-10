@@ -1,12 +1,23 @@
 body {
+  background-color: black;
   font-family: "Karla", sans-serif;
-  background-image: url("https://www.bootstrapdash.com/demo/coming-soon-template-free-1/assets/images/bg.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
   color: #ffffff;
   padding-bottom: 75px;
 }
+body:before {
+  content: "";
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../img/cover.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+  background-size: cover;
+  filter: blur(4px);
+  z-index: -9;
+}
+
 @media (min-width: 768px) {
   body {
     padding-bottom: 110px;

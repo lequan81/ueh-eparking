@@ -1,51 +1,29 @@
 // javascript for create.html
 const form = document.querySelector('form');
-// const message = document.getElementById('alert');
-
-/* const Dismiss = (event) => {
-  let element = event.target;
-  while (element.nodeName !== "BUTTON") {
-    element = element.parentNode;
-  }
-  element.parentNode.parentNode.removeChild(element.parentNode);
-}
- */
-// let template = '';
-
-
-
-/* const validatePassword = () => {
-
-  var password = form.password.value;
-  var repeatPassword = form.repeatPassword.value;
-  if (password != repeatPassword) {
-    console.log('Password Mismatched!')
-  } else {
-    console.log('Password Matched!')
-  }
-}
-
-function wrong_pass_alert() {
-  if (form.password.value != "" &&
-    form.repeatPassword.value != "") {
-    alert("Your response is submitted");
-  } else {
-    alert("Please fill all the fields");
-  }
-} */
 
 const buyBtn = document.getElementById('buycombo');
 
-/* buyBtn.onclick = () => {
-  console.log("click");
-  form.submit();
-}
- */
 const createNewCombo10 = async (e) => {
   // validatePassword();
 
   e.preventDefault();
-  console.log(form.username.value);
+  Toastify({
+    text: "Hệ thống đang xử lý... \n Vui lòng đợi trong giây lát...",
+    duration: 5000,
+    destination: "/",
+    newWindow: true,
+    close: false,
+    gravity: "top", // `top` or `bottom`
+    position: "center", // `left`, `center` or `right`
+    stopOnFocus: true, // Prevents dismissing of toast on hover
+    style: {
+      background: "#28418c",
+      padding: "20px",
+      fontSize: "18px",
+      borderRadius: "6px"
+    },
+    onClick: function () { } // Callback after click
+  }).showToast();
 
   const doc = {
     mssv: form.mssv.value,
@@ -53,7 +31,10 @@ const createNewCombo10 = async (e) => {
     email: form.email.value,
     bienso: form.bienso.value,
     sdt: form.phonenumber.value,
+    quantity: form.quantity.value,
     amount: form.quantity.value * 20,
+    date: (new Date()).toLocaleDateString('en-GB').split('/').join('-'),
+    time: (new Date()).toLocaleString().split(',')[0],
   }
 
   let res = await fetch('https://superficial-east-cake.glitch.me/data', {
@@ -77,7 +58,8 @@ const createNewCombo10 = async (e) => {
       style: {
         background: "#2dc997",
         padding: "20px",
-        fontSize: "20px"
+        fontSize: "18px",
+        borderRadius: "6px"
       },
       onClick: function () { } // Callback after click
     }).showToast();
@@ -95,7 +77,8 @@ const createNewCombo10 = async (e) => {
         style: {
           background: "#2dc997",
           padding: "20px",
-          fontSize: "20px"
+          fontSize: "18px",
+          borderRadius: "6px"
         },
         onClick: function () { } // Callback after click
       }).showToast();
