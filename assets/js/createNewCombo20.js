@@ -14,7 +14,7 @@ function sendEmail() {
     Subject: "Combo 20",
     Body: "Your Coupon code: 7219",
   }).then(
-    message => console.log('email sent'))
+    message => console.log('email sent')
   );
 }
 
