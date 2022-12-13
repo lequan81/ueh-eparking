@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>UEH E-Parking | QR Code</title>
+  <meta content="hệ thống giữ xe thông minh UEH" name="description">
+  <meta content="UEH" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <!--   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,300i,400,400i,700,700i|Poppins:300,400,500,700"
+    rel="stylesheet"> -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap|Roboto+Mono:300,300i,400,400i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+
+  <!-- Template Main CSS File -->
+  <!-- <link href="assets/css/style.css" rel="stylesheet"> -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    .toastify {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-size: 18px;
+      border-radius: 4px;
+      color: white;
+      justify-content: center;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body class=" bg-[#1e2d5a] min-h-screen p-4 sm:px-6 lg:px-8">
+  <main class="flex flex-col items-center justify-center">
+
+    <div id="toast"
+      class="hidden flex items-center p-4 space-x-4 w-full max-w-xs text-gray-500 bg-white rounded-lg divide-x divide-gray-200 shadow dark:text-gray-400 dark:divide-gray-700 space-x dark:bg-gray-800"
+      role="alert" data-aos="fade-down">
+
+    </div>
+
+    <div class="w-full max-w-md space-y-8">
+      <div class="flex flex-row">
+        <h2 class="mt-6 text-2xl font-extrabold text-center text-gray-50">
+          GET QR CODE
+        </h2>
+        <img class="w-auto h-16 ml-auto" src="./assets/img/logo.png" alt="Logo">
+      </div>
+
+      <div class="max-w-md overflow-hidden bg-[#28418c] rounded-lg p-6 shadow-xl">
+
+        <form class="space-y-4" action="#" method="POST">
+          <div class="-space-y-px rounded-md shadow-sm">
+            <div class="grid gap-6">
+              <div class="col-span-12">
+                <label for="mssv" class="block font-semibold text-gray-100 text-md">MSSV (*)</label>
+                <input type="text" name="mssv" id="mssv"
+                  class="block w-full p-4 pr-10 mt-2 mb-3 leading-tight text-gray-700 transition duration-500 ease-in-out border-2 border-gray-700 rounded shadow appearance-none focus:outline-none focus:bg-white focus:border-[#f26f33]"
+                  placeholder="67890 123456">
+              </div>
+
+              <div class="col-span-12">
+                <label for="coupon" class="block font-semibold text-gray-100 text-md">Coupon (*)</label>
+                <input type="text" name="coupon" id="coupon"
+                  class="block w-full p-4 pr-10 mt-2 mb-3 leading-tight text-gray-700 transition duration-500 ease-in-out border-2 border-gray-700 rounded shadow appearance-none focus:outline-none focus:bg-white focus:border-[#f26f33]"
+                  placeholder="5678-9012-3456">
+              </div>
+            </div>
+          </div>
+      </div>
+      <div>
+
+        <button type="submit" id="generate-btn"
+          class="relative flex justify-center w-full px-4 py-2 text-base font-semibold text-white bg-indigo-600 border border-transparent rounded-md group hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <span id="icon-btn" class="absolute inset-y-0 left-0 flex items-center pl-3">
+            <!-- Heroicon name: qr -->
+            <svg id="svg" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20" stroke-width="1.5"
+              stroke="currentColor" class="w-5 h-5 text-gray-100 group-hover:text-gray-50">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 013.75 9.375v-4.5zM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 01-1.125-1.125v-4.5zM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0113.5 9.375v-4.5z" />
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M6.75 6.75h.75v.75h-.75v-.75zM6.75 16.5h.75v.75h-.75v-.75zM16.5 6.75h.75v.75h-.75v-.75zM13.5 13.5h.75v.75h-.75v-.75zM13.5 19.5h.75v.75h-.75v-.75zM19.5 13.5h.75v.75h-.75v-.75zM19.5 19.5h.75v.75h-.75v-.75zM16.5 16.5h.75v.75h-.75v-.75z" />
+            </svg>
+          </span>GENERATE QR CODE
+        </button>
+      </div>
+      </form>
+      <div id="qrcode" class="hidden"></div>
+    </div>
+    </div>
+  </main>
+</body>
+<footer
+  class="fixed bottom-0 left-0 z-20 w-full p-3 bg-white border-gray-200 shadow md:flex md:items-center md:justify-between dark:bg-[#28418c]">
+  <span class="text-base text-gray-500 sm:text-center dark:text-gray-100">© 2022 <a href="https://flowbite.com/"
+      class="hover:underline">UEH</a>. All Rights Reserved.
+  </span>
+  <ul class="flex flex-wrap items-center mt-3 text-base text-gray-500 dark:text-gray-100 sm:mt-0">
+    <li>
+      <a href="#" class="mr-4 hover:underline md:mr-6 ">About</a>
+    </li>
+    <li>
+      <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
+    </li>
+    <li>
+      <a href="#" class="mr-4 hover:underline md:mr-6">Licensing</a>
+    </li>
+    <li>
+      <a href="#" class="hover:underline">Contact</a>
+    </li>
+  </ul>
+</footer>
+
+<!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script> -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+<script src="./assets/js/qrcode.js"></script>
+<script src="./assets/js/CreateQR.js"></script>
+
+</html>

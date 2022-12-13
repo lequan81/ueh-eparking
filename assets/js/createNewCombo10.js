@@ -3,6 +3,21 @@ const form = document.querySelector('form');
 
 const buyBtn = document.getElementById('buycombo');
 
+function sendEmail() {
+  Email.send({
+    SecureToken: '812536cb-cb12-4760-bd72-630f2a322d73',
+    /* Host: "smtp.gmail.com",
+    Username : "lucthienthu@gmail.com",
+    Password : "910111213", */
+    To: form.email.value,
+    From: "ueh.eparking@gmail.com",
+    Subject: "Combo 10",
+    Body: "Your Coupon code: 7789",
+  }).then(
+    message => console.log('email sent'))
+  );
+}
+
 const createNewCombo10 = async (e) => {
   // validatePassword();
 
@@ -84,8 +99,10 @@ const createNewCombo10 = async (e) => {
       }).showToast();
     }, 3000);
 
+    sendEmail();
+
     setTimeout(() => {
-      window.location.replace('/');
+      window.location.replace('/ueh-eparking');
     }, 9500);
   };
 }

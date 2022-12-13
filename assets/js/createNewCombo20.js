@@ -3,6 +3,21 @@ const form = document.querySelector('form');
 
 const buyBtn = document.getElementById('buycombo');
 
+function sendEmail() {
+  Email.send({
+    SecureToken: '812536cb-cb12-4760-bd72-630f2a322d73',
+    /* Host: "smtp.gmail.com",
+    Username : "lucthienthu@gmail.com",
+    Password : "910111213", */
+    To: form.email.value,
+    From: "ueh.eparking@gmail.com",
+    Subject: "Combo 20",
+    Body: "Your Coupon code: 7219",
+  }).then(
+    message => console.log('email sent'))
+  );
+}
+
 const createNewCombo10 = async (e) => {
   // validatePassword();
 
@@ -47,7 +62,7 @@ const createNewCombo10 = async (e) => {
     console.log('ok');
 
     Toastify({
-      text: " Đăng ký Combo 10 lượt thành công! ",
+      text: " Đăng ký Combo 20 lượt thành công! ",
       duration: 4000,
       destination: "/",
       newWindow: true,
@@ -84,8 +99,10 @@ const createNewCombo10 = async (e) => {
       }).showToast();
     }, 3000);
 
+    sendEmail();
+
     setTimeout(() => {
-      window.location.replace('/');
+      window.location.replace('/ueh-eparking');
     }, 9500);
   };
 }
