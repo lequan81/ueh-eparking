@@ -5,6 +5,7 @@ const btnGenerator = document.getElementById('generate-btn');
 const toast = document.getElementById('toast');
 const toastMessage = document.getElementById('toast-message');
 const iconBtn = document.getElementById('icon-btn');
+let toastShow = false;
 
 
 function downloadImg() {
@@ -49,18 +50,20 @@ function downloadImage(image, filename) {
 }
 
 const showToastGenerator = () => {
-  setTimeout(() => {
-    toast.classList.remove('hidden');
-    toast.innerHTML = /*html */`
-    <svg aria-hidden="true" fill="currentColor" class="w-6 h-6 text-blue-600 dark:text-blue-500" focusable="false"
-    role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 01.67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 11-.671-1.34l.041-.022zM12 9a.75.75 0 100-1.5.75.75 0 000 1.5z" clip-rule="evenodd" />
-  </svg>
-  <div class="pl-4 text-sm font-normal">
-    <p id="toast-message">Generate QR code. Please wait...</p>
-  </div>
-    `;
-  }, 500);
+  if (toastShow == false) {
+    setTimeout(() => {
+      toast.classList.remove('hidden');
+      toast.innerHTML = /*html */`
+      <svg aria-hidden="true" fill="currentColor" class="w-6 h-6 text-blue-600 dark:text-blue-500" focusable="false"
+      role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 01.67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 11-.671-1.34l.041-.022zM12 9a.75.75 0 100-1.5.75.75 0 000 1.5z" clip-rule="evenodd" />
+    </svg>
+    <div class="pl-4 text-sm font-normal">
+      <p id="toast-message">Generate QR code. Please wait...</p>
+    </div>
+      `;
+    }, 500);
+  }
 
   setTimeout(() => {
     toast.classList.add('hidden');
@@ -68,18 +71,20 @@ const showToastGenerator = () => {
 }
 
 const showToastComplete = () => {
-  setTimeout(() => {
-    toast.classList.remove('hidden');
-    toast.innerHTML = /*html */`
-    <svg aria-hidden="true" fill="currentColor" class="w-6 h-6 text-green-600 dark:text-green-500" focusable="false"
-    role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd" />
-  </svg>
-  <div class="pl-4 text-sm font-normal">
-    <p id="toast-message">QR code generate complete</p>
-  </div>
-    `;
-  }, 2000);
+  if (toastShow == false) {
+    setTimeout(() => {
+      toast.classList.remove('hidden');
+      toast.innerHTML = /*html */`
+      <svg aria-hidden="true" fill="currentColor" class="w-6 h-6 text-green-600 dark:text-green-500" focusable="false"
+      role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd" />
+    </svg>
+    <div class="pl-4 text-sm font-normal">
+      <p id="toast-message">QR code generate complete</p>
+    </div>
+      `;
+    }, 2000);
+  }
 
   setTimeout(() => {
     toast.classList.add('hidden');
@@ -107,6 +112,7 @@ const createQR = async (e) => {
   showToastComplete();
 
   setTimeout(() => {
+    toastShow = true;
     btnGenerator.innerHTML = /* html */ `
     <span id="icon-btn" class="absolute inset-y-0 left-0 flex items-center pl-3">
             <!-- Heroicon name: qr -->
@@ -122,6 +128,9 @@ const createQR = async (e) => {
 
   btnGenerator.addEventListener('click', () => {
     downloadImg();
+    setTimeout(() => {
+      toastShow = false;
+    }, 1000)
   });
 
   /*     setTimeout(() => {
