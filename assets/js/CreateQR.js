@@ -48,10 +48,7 @@ function downloadImage(image, filename) {
   document.body.removeChild(element);
 }
 
-const createQR = async (e) => {
-  // validatePassword();
-  e.preventDefault();
-
+const showToastGenerator = () => {
   setTimeout(() => {
     toast.classList.remove('hidden');
     toast.innerHTML = /*html */`
@@ -68,19 +65,9 @@ const createQR = async (e) => {
   setTimeout(() => {
     toast.classList.add('hidden');
   }, 3500)
+}
 
-  var QR_CODE = new QRCode("qrcode", {
-    width: 220,
-    height: 220,
-    colorDark: "#f26f33",
-    colorLight: "#ffffff",
-    correctLevel: QRCode.CorrectLevel.H,
-  });
-
-  let code = form.mssv.value + "_" + form.coupon.value;
-
-  QR_CODE.makeCode(code);
-
+const showToastComplete = () => {
   setTimeout(() => {
     toast.classList.remove('hidden');
     toast.innerHTML = /*html */`
@@ -97,6 +84,27 @@ const createQR = async (e) => {
   setTimeout(() => {
     toast.classList.add('hidden');
   }, 2500)
+}
+
+const createQR = async (e) => {
+  // validatePassword();
+  e.preventDefault();
+
+  showToastGenerator();
+
+  var QR_CODE = new QRCode("qrcode", {
+    width: 220,
+    height: 220,
+    colorDark: "#f26f33",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.H,
+  });
+
+  let code = form.mssv.value + "_" + form.coupon.value;
+
+  QR_CODE.makeCode(code);
+
+  showToastComplete();
 
   setTimeout(() => {
     btnGenerator.innerHTML = /* html */ `
@@ -109,9 +117,9 @@ const createQR = async (e) => {
 
           </span>Download QR Code
     `;
-    btnGenerator.setAttribute('id', 'downloadBtn');
+    // btnGenerator.setAttribute('id', 'downloadBtn');
   }, 1000)
-  const downloadBtn = document.getElementById('downloadBtn');
+
   btnGenerator.addEventListener('click', () => {
     downloadImg();
   });
